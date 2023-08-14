@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine
 from sqlalchemy import ForeignKey, Column, Integer, String, MetaData
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -45,7 +45,7 @@ class Test(Base):
 
     id = Column(Integer(), primary_key=True)
     question = Column(String())
-    answer = Column(Integer(1))
+    answer = Column(Integer())
 
     user_id = Column(Integer(), ForeignKey("user.id"))
     # many-to-one scalar for preventing possible bugs
