@@ -16,6 +16,8 @@ class Idol(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(String())
     type = Column(String(4))
+    type_alias = Column(String())
+    match_type = Column(String())
 
     users = relationship("User", back_populates="idol")
 
@@ -30,6 +32,7 @@ class User(Base):
     id = Column(Integer(), primary_key=True)
     email = Column(String())
     type = Column(String(4))
+    type_alias = Column(String())
 
     idol_id = Column(Integer(), ForeignKey('idol.id'))
     idol = relationship("Idol", back_populates="users")
