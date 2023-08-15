@@ -23,7 +23,8 @@ class Idol(Base):
     def __repr__(self):
         return f'Idol(id={self.id}, ' + \
             f'name={self.name}, ' + \
-            f'type={self.type})'
+            f'type={self.type}) ' + \
+            f'alias={self.match_type}'
 
 class User(Base):
     __tablename__ = 'user'
@@ -35,25 +36,26 @@ class User(Base):
 
     idol_id = Column(Integer(), ForeignKey('idol.id'))
     idol = relationship("Idol", back_populates="users")
-    test = relationship("Test", back_populates="user", uselist=False)
+    # test = relationship("Test", back_populates="user", uselist=False)
 
     def __repr__(self):
         return f'User(id={self.id}, ' + \
             f'email={self.email}, ' + \
-            f'type={self.type})'
+            f'type={self.type}) ' + \
+            f'alias={self.match_type}'
     
-class Test(Base):
-    __tablename__ = 'question'
+# class Test(Base):
+#     __tablename__ = 'question'
 
-    id = Column(Integer(), primary_key=True)
-    question = Column(String())
-    answer = Column(Integer())
+#     id = Column(Integer(), primary_key=True)
+#     question = Column(String())
+#     answer = Column(Integer())
 
-    user_id = Column(Integer(), ForeignKey("user.id"))
-    # many-to-one scalar for preventing possible bugs
-    parent = relationship("Parent", back_populates="child")
+#     user_id = Column(Integer(), ForeignKey("user.id"))
+#     # many-to-one scalar for preventing possible bugs
+#     parent = relationship("Parent", back_populates="child")
 
-    def __repr__(self):
-        return f'Test(id={self.id}, ' + \
-            f'question={self.question}, ' + \
-            f'answer={self.answer})'
+#     def __repr__(self):
+#         return f'Test(id={self.id}, ' + \
+#             f'question={self.question}, ' + \
+#             f'answer={self.answer})'
