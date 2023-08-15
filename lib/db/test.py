@@ -1,23 +1,4 @@
-#!/usr/bin/env python3
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from faker import Faker
-# import random
-
-from models import Idol, User, Test
-
-if __name__ == '__main__':
-    engine = create_engine('sqlite:///idolmatch.db')
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    session.query(Idol).delete()
-    session.query(User).delete()
-    session.query(Test).delete()
-
-    fake = Faker()
-
-    questions = [
+questions = [
                 'makes lists 1 2 3 4 5 relies on memory',
                  'sceptical 1 2 3 4 5 wants to believe',
                  'bored by time alone 1 2 3 4 5 needs time alone',
