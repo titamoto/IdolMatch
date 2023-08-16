@@ -41,8 +41,6 @@ class User(Base):
     idol = relationship("Idol", back_populates="users")
     # test = relationship("Test", back_populates="user", uselist=False)
 
-
-
     @classmethod    
     def email_found(cls, email_input):
         if session.query(cls).filter(cls.email == email_input).first():
@@ -55,6 +53,11 @@ class User(Base):
     @classmethod
     def delete_result(cls, email):
         session.query(cls).filter(cls.email == email).delete()
+        session.commit()
+
+    @classmethod
+    def persist_result(self):
+        session.add(self)
         session.commit()
 
 

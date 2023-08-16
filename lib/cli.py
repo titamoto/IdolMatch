@@ -1,6 +1,7 @@
-from db import seeds
 from simple_term_menu import TerminalMenu
 import re
+import time
+from db import seeds
 from db.models import User
 from db.test import questions
 
@@ -35,6 +36,7 @@ if __name__ == '__main__':
 
     def show_result(email):
         User.get_result(email)
+        time.sleep(2)
         options = ["back to main", "redo the test"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
@@ -88,13 +90,13 @@ if __name__ == '__main__':
     #no -- ask for email -
 #email is not found: +
     #start quiz: +
-    #show question, show the same instruction, ask for input 
-    #check if input is in range 1 to 5
-        #yes -- append answers list, ask next one
-        #no -- print answer should be in range of 1 to 5
-    #when no more questions -- ask if user wants result
+    #show question, show the same instruction, ask for input +
+    #check if input is in range 1 to 5 +
+        #yes -- append answers list, ask next one +
+        #no -- print answer should be in range of 1 to 5 +
+    #when no more questions -- ask if user wants result +
         #no, too shy, exit
         #yes
-            #process answers -- show result
-            #redo the test/exit
+            #process answers -- show result +
+            #redo the test/exit +
 
