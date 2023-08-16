@@ -39,7 +39,6 @@ class User(Base):
 
     idol_id = Column(Integer(), ForeignKey('idol.id'))
     idol = relationship("Idol", back_populates="users")
-    # test = relationship("Test", back_populates="user", uselist=False)
 
     @classmethod    
     def email_found(cls, email_input):
@@ -62,25 +61,4 @@ class User(Base):
 
     def __repr__(self):
         return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \
-              f'Disclaimer: relationships with BTS members are not garanteed.'  
-
-
-
-
-
-
-# class Test(Base):
-#     __tablename__ = 'question'
-
-#     id = Column(Integer(), primary_key=True)
-#     question = Column(String())
-#     answer = Column(Integer())
-
-#     user_id = Column(Integer(), ForeignKey("user.id"))
-#     # many-to-one scalar for preventing possible bugs
-#     parent = relationship("Parent", back_populates="child")
-
-#     def __repr__(self):
-#         return f'Test(id={self.id}, ' + \
-#             f'question={self.question}, ' + \
-#             f'answer={self.answer})'
+              f'Disclaimer: relationships with BTS members are not garanteed.'

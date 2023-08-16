@@ -5,7 +5,7 @@ from db.models import User
 from db.test import questions
 from db.types import types
 from db.seeds import seed
-from db.session import session
+# from db.session import session
 
 greeting = 'Welcome to IdolMatch!'
 

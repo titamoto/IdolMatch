@@ -21,10 +21,11 @@ def seed():
         session.add(test_user)
         session.commit()
 
-
-    if __name__ == '__main__':
-        delete_records()
-        create_records()
+    delete_records()
+    create_records()
+    # if __name__ == '__main__':
+    #     delete_records()
+    #     create_records()
 
 
 
