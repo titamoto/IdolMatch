@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-from session import session
-from idols import populate_idols
+from db.session import session
+from db.idols import populate_idols
 # from faker import Faker
 # import random
 
-from models import Idol, User
+from db.models import Idol, User
 
 # fake = Faker()
 
@@ -17,7 +17,9 @@ def seed():
 
     def create_records():
         populate_idols()
-        # test_user = User(email='user@test.com', type='ENTJ', type_alias='', idol_id='')
+        test_user = User(email='user@test.com', type='ENTJ')
+        session.add(test_user)
+        session.commit()
 
 
     if __name__ == '__main__':

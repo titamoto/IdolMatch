@@ -1,7 +1,7 @@
 from sqlalchemy import ForeignKey, Column, Integer, String, MetaData
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from session import session
+from db.session import session
 # from idols import populate_idols
 
 convention = {

@@ -1,10 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Idol
-
-engine = create_engine('sqlite:///idolmatch.db')
-Session = sessionmaker(bind=engine)
-session = Session()
+from db.models import Idol
+from db.session import session
 
 def populate_idols():
     # Jin: INTP, The Thinker, match is ENTJ, ENFJ; 

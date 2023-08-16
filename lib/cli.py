@@ -1,25 +1,28 @@
 from simple_term_menu import TerminalMenu
 import re
 import time
-from db import seeds
 from db.models import User
 from db.test import questions
 from db.types import types
 from db.seeds import seed
+from db.session import session
 
 greeting = 'Welcome to IdolMatch!'
 
 if __name__ == '__main__':
-    seed()
 
     def main():
         print(greeting)
+        ask_email()
+
+    def ask_email():
         print('Please enter your email:')
         email_input = input()
         if re.fullmatch(r'^\D[a-zA-Z0-9\.]+@[a-zA-Z]+\.[a-z]+', email_input):
             search_email(email_input)
         else:
             print('The input is invalid. Try again')
+            ask_email()
 
     def search_email(email):
         if User.email_found(email) == True:
@@ -86,6 +89,9 @@ if __name__ == '__main__':
         result[2] = 'T' if ft > 24 else 'F'
         result[3] = 'P' if jp > 24 else 'J'
         return result 
+    
+    #seed the db:
+    seed()
     #run main menu:
     main()
     
