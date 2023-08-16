@@ -43,7 +43,6 @@ if __name__ == '__main__':
         elif menu_entry_index == 1:
             start_test(email)       
 
-
     def start_test(email):
         User.delete_result(email)
         answers = []
@@ -52,9 +51,15 @@ if __name__ == '__main__':
             ask_question()
             count += 1
             answers.append(answer)
-        calculate_result()
-        persist_result(email)
+        result = calculate_result()
+        persist_result(email, result)
         show_result(email)
+    
+    def ask_question():
+        pass
+
+    def calculate_result():
+        pass
     
     #run main menu:
     main()

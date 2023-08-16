@@ -41,6 +41,8 @@ class User(Base):
     idol = relationship("Idol", back_populates="users")
     # test = relationship("Test", back_populates="user", uselist=False)
 
+
+
     @classmethod    
     def email_found(cls, email_input):
         if session.query(cls).filter(cls.email == email_input).first():
@@ -49,6 +51,12 @@ class User(Base):
     @classmethod
     def get_result(cls, email):
         return session.query(cls).filter(cls.email == email).all()
+    
+    @classmethod
+    def delete_result(cls, email):
+        session.query(cls).filter(cls.email == email).delete()
+        session.commit()
+
 
     def __repr__(self):
         return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \
