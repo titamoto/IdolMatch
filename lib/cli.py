@@ -12,7 +12,9 @@ greeting = 'Welcome to IdolMatch!'
 if __name__ == '__main__':
 
     def main():
+        print("\n" * 10)
         print(greeting)
+        print("\n" * 5)
         ask_email()
 
     def ask_email():
@@ -70,7 +72,7 @@ if __name__ == '__main__':
     
     def ask_question(count):
         print (
-            f'{questions[count]}'\
+            f'{questions[count]}\n'
             'Type a number from 1 to 5, where "1" corresponds with the left statement, "5"--with the right, and "3" is neutral:'
                 )
         answer = input()

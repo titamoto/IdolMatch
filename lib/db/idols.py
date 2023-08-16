@@ -5,6 +5,7 @@ from db.session import session
 
 def populate_idols():
     # Jin: INTP, The Thinker, match is ENTJ, ENFJ; 
+    idols = []
     jin = Idol(
         name='Jin',
         type='INTP',
@@ -53,5 +54,6 @@ def populate_idols():
         type_alias='The Mediator',
         match_type='ENTJ, ENFJ'
     )
-    session.add_all(jin, jungkook, v, jimin, rm, jhope, suga)
+    idols = [jin, jungkook, v, jimin, rm, jhope, suga]
+    session.add_all(idols)
     session.commit()
