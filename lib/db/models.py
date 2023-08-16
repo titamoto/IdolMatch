@@ -59,6 +59,9 @@ class User(Base):
         session.add(self)
         session.commit()
 
+    # def __repr__(self):
+    #     return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \
+    #           f'Disclaimer: relationships with BTS members are not guaranteed.'
+
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \
-              f'Disclaimer: relationships with BTS members are not garanteed.'
+        return f'Your type is {self.type}.'
