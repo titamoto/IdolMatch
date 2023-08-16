@@ -8,6 +8,7 @@ alembic = "*"
 requests = "*"
 sqlalchemy = "==1.4"
 ipdb = "*"
+simple-term-menu = "*"
 
 [dev-packages]
 
