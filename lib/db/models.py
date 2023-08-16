@@ -41,16 +41,18 @@ class User(Base):
     idol = relationship("Idol", back_populates="users")
     # test = relationship("Test", back_populates="user", uselist=False)
 
-    def __repr__(self):
-        return f'User(id={self.id}, ' + \
-            f'email={self.email}, ' + \
-            f'type={self.type}) ' + \
-            f'alias={self.match_type}'
-    
     @classmethod    
     def email_found(cls, email_input):
         if session.query(cls).filter(cls.email == email_input).first():
             return True
+    
+    @classmethod
+    def get_result(cls, email):
+        return session.query(cls).filter(cls.email == email).all()
+
+    def __repr__(self):
+        return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \
+              f'Disclaimer: relationships with BTS members are not garanteed.'  
 
 
 
