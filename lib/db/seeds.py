@@ -16,7 +16,8 @@ def delete_records():
 
 def create_records():
     populate_idols()
-    # test_user = User(email='user@test.com')
+    # test_user = User(email='user@test.com', type='ENTJ', type_alias='', idol_id='')
+
 
 if __name__ == '__main__':
     delete_records()
