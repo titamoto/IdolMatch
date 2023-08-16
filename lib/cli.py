@@ -2,6 +2,7 @@ from db import seeds
 from simple_term_menu import TerminalMenu
 import re
 from db.models import User
+from db.test import questions
 
 greeting = 'Welcome to IdolMatch!'
 
@@ -44,26 +45,29 @@ if __name__ == '__main__':
 
 
     def start_test(email):
-        pass
+        User.delete_result(email)
+        answers = []
+        count = 0
+        while count < len(questions):
+            ask_question()
+            count += 1
+            answers.append(answer)
+        calculate_result()
+        persist_result(email)
+        show_result(email)
     
-    
+    #run main menu:
     main()
     
 
-    
-
-
-    # print(f"You have selected {options[menu_entry_index]}!")
-        
-
-#ask for email
-#search for email
-#email is in db -- confirm email
-    #yes -- show result/redo the test/exit
-    #no -- ask for email
-#email is not found:
-    #start quiz:
-    #show question, show the same instruction, ask for input
+#ask for email +
+#search for email +
+#email is in db -- confirm email -
+    #yes -- show result/redo the test/exit +
+    #no -- ask for email -
+#email is not found: +
+    #start quiz: +
+    #show question, show the same instruction, ask for input 
     #check if input is in range 1 to 5
         #yes -- append answers list, ask next one
         #no -- print answer should be in range of 1 to 5
