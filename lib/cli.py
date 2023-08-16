@@ -34,6 +34,14 @@ if __name__ == '__main__':
 
     def show_result(email):
         User.get_result(email)
+        options = ["back to main", "redo the test"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+        if menu_entry_index == 0:
+            main()
+        elif menu_entry_index == 1:
+            start_test(email)       
+
 
     def start_test(email):
         pass
