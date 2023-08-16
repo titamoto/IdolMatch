@@ -2,7 +2,7 @@ from sqlalchemy import ForeignKey, Column, Integer, String, MetaData
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from session import session
-from idols import populate_idols
+# from idols import populate_idols
 
 convention = {
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -59,7 +59,6 @@ class User(Base):
     def persist_result(self):
         session.add(self)
         session.commit()
-
 
     def __repr__(self):
         return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \

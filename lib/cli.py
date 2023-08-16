@@ -4,11 +4,13 @@ import time
 from db import seeds
 from db.models import User
 from db.test import questions
+from db.types import types
+from db.seeds import seed
 
 greeting = 'Welcome to IdolMatch!'
 
 if __name__ == '__main__':
-    #run seeds.py
+    seed()
 
     def main():
         print(greeting)
@@ -55,7 +57,12 @@ if __name__ == '__main__':
             answers.append(answer)
         result = calculate_result(answers)
         #create a user record in the database:
-        User.persist_result(email, result)
+        user = User(
+            email=email,
+            type=result,
+            type_alias=types[result]
+        )
+        user.persist_result()
         show_result(email)
     
     def ask_question(count):
