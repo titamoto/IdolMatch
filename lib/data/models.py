@@ -61,6 +61,7 @@ class User(Base):
         session.add(self)
         session.commit()
 
+#fetch idol.type
     def find_match(self):
         for idol in self.idols:
             if self.type in [type.strip() for type in idol.match_type.split(',')]:
