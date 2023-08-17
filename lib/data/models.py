@@ -1,15 +1,22 @@
-from sqlalchemy import ForeignKey, Column, Integer, String, MetaData
+from sqlalchemy import ForeignKey, Column, Integer, String, MetaData, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from db.session import session
-# from idols import populate_idols
+from .types import types
+from session import session
 
 convention = {
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
 }
 metadata = MetaData(naming_convention=convention)
-
 Base = declarative_base(metadata=metadata)
+
+idol_user = Table(
+    'idol_user',
+    Base.metadata,
+    Column('idol_id', ForeignKey('idol.id'), primary_key=True),
+    Column('user_id', ForeignKey('user.id'), primary_key=True),
+    extend_existing=True,
+)
 
 class Idol(Base):
     __tablename__ = 'idol'
@@ -20,13 +27,10 @@ class Idol(Base):
     type_alias = Column(String())
     match_type = Column(String())
 
-    users = relationship("User", back_populates="idol")
+    users = relationship("User", secondary=idol_user, back_populates="idols")
 
     def __repr__(self):
-        return f'Idol(id={self.id}, ' + \
-            f'name={self.name}, ' + \
-            f'type={self.type}) ' + \
-            f'alias={self.match_type}'
+        return f'{self.name} is {self.type}, {self.type_alias}. His match types are {self.match_type}.'
 
 
 class User(Base):
@@ -37,8 +41,7 @@ class User(Base):
     type = Column(String(4))
     type_alias = Column(String())
 
-    idol_id = Column(Integer(), ForeignKey('idol.id'))
-    idol = relationship("Idol", back_populates="users")
+    idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
     @classmethod    
     def email_found(cls, email_input):
@@ -54,14 +57,16 @@ class User(Base):
         session.query(cls).filter(cls.email == email).delete()
         session.commit()
 
-    @classmethod
     def persist_result(self):
         session.add(self)
         session.commit()
 
-    # def __repr__(self):
-    #     return f'Your type is {self.type}, {self.type_alias}. Your BTS match is {self.idol.name}. ' + \
-    #           f'Disclaimer: relationships with BTS members are not guaranteed.'
-
+    def find_match(self):
+        for idol in self.idols:
+            if self.type in [type.strip() for type in idol.match_type.split(',')]:
+                return idol.name
+            else:
+                return 'nobody'
+        
     def __repr__(self):
-        return f'Your type is {self.type}.'
+        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {self.find_match()}'

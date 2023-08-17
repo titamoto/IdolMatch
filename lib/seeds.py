@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-from db.session import session
-from db.idols import populate_idols
+from session import session
+from data.idols import populate_idols
 # from faker import Faker
 # import random
 
-from db.models import Idol, User
+from data.models import Idol, User
 
 # fake = Faker()
 
@@ -23,9 +23,6 @@ def seed():
 
     delete_records()
     create_records()
-    # if __name__ == '__main__':
-    #     delete_records()
-    #     create_records()
 
 
 

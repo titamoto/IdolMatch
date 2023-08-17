@@ -1,7 +1,5 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from db.models import Idol
-from db.session import session
+from .models import Idol
+from session import session
 
 def populate_idols():
     idols = []

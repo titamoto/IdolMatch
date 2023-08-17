@@ -1,10 +1,10 @@
 from simple_term_menu import TerminalMenu
 import re
 import time
-from db.models import User
-from db.test import questions
-from db.types import types
-from db.seeds import seed
+from data.models import User
+from data.test import questions
+from data.types import types
+from seeds import seed
 # from db.session import session
 
 greeting = 'Welcome to IdolMatch!'
@@ -24,6 +24,7 @@ if __name__ == '__main__':
             search_email(email_input)
         else:
             print('The input is invalid. Try again')
+            time.sleep(2)
             ask_email()
 
     def search_email(email):
@@ -99,20 +100,4 @@ if __name__ == '__main__':
     main()
     
 
-#ask for email +
-#search for email +
-#email is in db -- confirm email -
-    #yes -- show result/redo the test/exit +
-    #no -- ask for email -
-#email is not found: +
-    #start quiz: +
-    #show question, show the same instruction, ask for input +
-    #check if input is in range 1 to 5 +
-        #yes -- append answers list, ask next one +
-        #no -- print answer should be in range of 1 to 5 +
-    #when no more questions -- ask if user wants result +
-        #no, too shy, exit
-        #yes
-            #process answers -- show result +
-            #redo the test/exit +
 
