@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-alembic = "*"
 requests = "*"
 sqlalchemy = "==1.4"
 ipdb = "*"
 simple-term-menu = "*"
+alembic = "*"
 
 [dev-packages]
 
