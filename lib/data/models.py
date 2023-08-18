@@ -62,12 +62,21 @@ class User(Base):
         session.commit()
 
 #fetch idol.type
-    def find_match(self):
-        for idol in self.idols:
-            if self.type in [type.strip() for type in idol.match_type.split(',')]:
-                return idol.name
-            else:
-                return 'nobody'
+    # def find_match(self):
+    #     for idol in self.idols:
+    #         if self.type in [type.strip() for type in idol.match_type.split(',')]:
+    #             return idol.name
+    #         else:
+    #             return 'nobody'
+
+    @classmethod
+    def find_match(cls, email):
+        user_record = session.query(cls).filter(cls.email == email).first()
+        matches = session.query(Idol).filter(user_record.type in str(Idol.match_type)).all()
+        return [match.match_type for match in matches] 
+        
+
+
         
     def __repr__(self):
-        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {self.find_match()}'
+        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {User.find_match(self.email)}'
