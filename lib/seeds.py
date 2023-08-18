@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from session import session
 from data.idols import populate_idols
+from data.types import types
 # from faker import Faker
 # import random
 
@@ -17,7 +18,7 @@ def seed():
 
     def create_records():
         populate_idols()
-        test_user = User(email='user@test.com', type='ENTJ')
+        test_user = User(email='user@test.com', type='ENTJ', type_alias=types['ENTJ'])
         session.add(test_user)
         session.commit()
 
