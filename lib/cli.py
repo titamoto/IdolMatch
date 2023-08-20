@@ -7,14 +7,14 @@ from data.types import types
 from seeds import seed
 # from db.session import session
 
-greeting = 'Welcome to IdolMatch!'
+greeting =' ____  ____  _____  __    __  __    __   ____  ___  _   _ \n(_  _)(  _ \(  _  )(  )  (  \/  )  /__\ (_  _)/ __)( )_( )\n _)(_  )(_) ))(_)(  )(__  )    (  /(__)\  )( ( (__  ) _ ( \n(____)(____/(_____)(____)(_/\/\_)(__)(__)(__) \___)(_) (_)\n'
 
 if __name__ == '__main__':
 
     def main():
         print("\n" * 10)
         print(greeting)
-        print("\n" * 5)
+        print("Welcome to IdolMatch!")
         ask_email()
 
     def ask_email():
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     def ask_question(count):
         print (
             f'\n{questions[count]}\n\n'
-            'Type a number from 1 to 5, where "1" corresponds with the left statement, "5"--with the right, and "3" is neutral:'
+            'Type a number from 1 to 5, where "1" corresponds with the left statement, \n"5"--with the right, and "3" is neutral:'
                 )
         answer = input()
         #breaks if input is not a number
