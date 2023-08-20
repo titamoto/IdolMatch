@@ -28,7 +28,7 @@ if __name__ == '__main__':
             ask_email()
 
     def search_email(email):
-        if User.email_found(email) == True:
+        if User.get_result(email) == True:
             print('You have already done the test. What do you want:')
             options = ["show result", "redo the test", "back to main"]
             terminal_menu = TerminalMenu(options)
@@ -40,7 +40,13 @@ if __name__ == '__main__':
             else:
                 main()
         else:
-            start_test(email)
+            options = ["start test", "back to main"]
+            terminal_menu = TerminalMenu(options)
+            menu_entry_index = terminal_menu.show()
+            if menu_entry_index == 0:        
+                start_test(email)
+            else:
+                main()
 
     def show_result(email):
         result = User.get_result(email)

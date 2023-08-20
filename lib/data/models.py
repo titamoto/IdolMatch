@@ -43,10 +43,10 @@ class User(Base):
 
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
-    @classmethod    
-    def email_found(cls, email_input):
-        if session.query(cls).filter(cls.email == email_input).first():
-            return True
+    # @classmethod    
+    # def email_found(cls, email_input):
+    #     if session.query(cls).filter(cls.email == email_input).first():
+    #         return True
     
     @classmethod
     def get_result(cls, email):
