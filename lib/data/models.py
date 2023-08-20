@@ -50,7 +50,7 @@ class User(Base):
     
     @classmethod
     def get_result(cls, email):
-        return session.query(cls).filter(cls.email == email).all()
+        return session.query(cls).filter(cls.email == email).first()
     
     @classmethod
     def delete_result(cls, email):
@@ -72,11 +72,11 @@ class User(Base):
     @classmethod
     def find_match(cls, email):
         user_record = session.query(cls).filter(cls.email == email).first()
-        matches = session.query(Idol).filter(user_record.type in str(Idol.match_type)).all()
-        return [match.match_type for match in matches] 
-        
 
+        # matches = session.query(Idol).filter(Idol.match_type == user_record.type).all()
+        return user_record.type
+    
 
         
     def __repr__(self):
-        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {User.find_match(self.email)}'
+        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {self.idols}'
