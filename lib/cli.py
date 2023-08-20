@@ -15,7 +15,15 @@ if __name__ == '__main__':
         print("\n" * 10)
         print(greeting)
         print("Welcome to IdolMatch!")
-        ask_email()
+        print("\n" * 2)
+        options = ["login", "quit"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+        if menu_entry_index == 0:        
+            ask_email()
+        else:
+            quit()
+        
 
     def ask_email():
         print('Please enter your email:')
