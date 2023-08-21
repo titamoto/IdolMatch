@@ -1,7 +1,7 @@
 from sqlalchemy import ForeignKey, Column, Integer, String, MetaData, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from .types import types
+# from .types import types
 from session import session
 
 convention = {
@@ -66,5 +66,5 @@ class User(Base):
         session.commit()
         
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols]}'
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols if idol.match_type[:2] == self.type[:2]]}'
 

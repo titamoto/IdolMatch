@@ -1,7 +1,5 @@
 from .models import Idol
 
-idols = []
-
 jin = Idol(
     name='Jin',
     type='INTP',
