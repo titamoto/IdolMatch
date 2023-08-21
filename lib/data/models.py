@@ -43,40 +43,43 @@ class User(Base):
 
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
-    # @classmethod    
-    # def email_found(cls, email_input):
-    #     if session.query(cls).filter(cls.email == email_input).first():
-    #         return True
+    def persist_result(self):
+        session.add(self)
+        session.commit()
+
+    @classmethod
+    def found_email(cls, email):
+        if session.query(cls).filter(cls.email == email).first():
+            return True  
     
     @classmethod
     def get_result(cls, email):
         return session.query(cls).filter(cls.email == email).first()
+ 
     
     @classmethod
     def delete_result(cls, email):
         session.query(cls).filter(cls.email == email).delete()
         session.commit()
 
-    def persist_result(self):
-        session.add(self)
-        session.commit()
 
-#fetch idol.type
-    # def find_match(self):
-    #     for idol in self.idols:
-    #         if self.type in [type.strip() for type in idol.match_type.split(',')]:
-    #             return idol.name
-    #         else:
-    #             return 'nobody'
+    def find_match(self):
+        for idol in self.idols:
+            if self.type in [type.strip() for type in idol.match_type.split(',')]:
+                return idol.name
+            else:
+                return 'nobody'
 
-    @classmethod
-    def find_match(cls, email):
-        user_record = session.query(cls).filter(cls.email == email).first()
-
-        # matches = session.query(Idol).filter(Idol.match_type == user_record.type).all()
-        return user_record.type
+    # @classmethod
+    # def find_match(cls, email):
+    #     user_record = cls.get_result(email)
+    #     matches = session.query(Idol).filter(Idol.match_type[:2] == user_record.type).first()
+    #     return [match.name for match in matches]
     
 
         
     def __repr__(self):
-        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {self.idols}'
+        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is Noooo'
+    
+    # def __repr__(self):
+    #     return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {User.find_match(self.email)}'
