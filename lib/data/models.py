@@ -13,8 +13,9 @@ Base = declarative_base(metadata=metadata)
 idol_user = Table(
     'idol_user',
     Base.metadata,
-    Column('idol_id', ForeignKey('idol.id'), primary_key=True),
-    Column('user_id', ForeignKey('user.id'), primary_key=True),
+    Column('id', Integer(), primary_key=True),
+    Column('idol_id', ForeignKey('idol.id'), primary_key=False),
+    Column('user_id', ForeignKey('user.id'), primary_key=False),
     extend_existing=True,
 )
 
@@ -44,6 +45,8 @@ class User(Base):
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
     def persist_result(self):
+        # match = session.query(Idol).filter(Idol.match_type[:2] == self.type[:2]).first()
+        # self.idols.append(match)
         session.add(self)
         session.commit()
 
@@ -61,25 +64,7 @@ class User(Base):
     def delete_result(cls, email):
         session.query(cls).filter(cls.email == email).delete()
         session.commit()
-
-
-    def find_match(self):
-        for idol in self.idols:
-            if self.type in [type.strip() for type in idol.match_type.split(',')]:
-                return idol.name
-            else:
-                return 'nobody'
-
-    # @classmethod
-    # def find_match(cls, email):
-    #     user_record = cls.get_result(email)
-    #     matches = session.query(Idol).filter(Idol.match_type[:2] == user_record.type).first()
-    #     return [match.name for match in matches]
-    
-
         
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. You match from BTS is Noooo'
-    
-    # def __repr__(self):
-    #     return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {User.find_match(self.email)}'
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols]}'
+
