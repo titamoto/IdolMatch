@@ -45,6 +45,7 @@ class User(Base):
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
     def persist_result(self):
+        # self.idols = []
         # match = session.query(Idol).filter(Idol.match_type[:2] == self.type[:2]).first()
         # self.idols.append(match)
         session.add(self)
@@ -59,12 +60,14 @@ class User(Base):
     def get_result(cls, email):
         return session.query(cls).filter(cls.email == email).first()
  
-    
     @classmethod
     def delete_result(cls, email):
         session.query(cls).filter(cls.email == email).delete()
         session.commit()
         
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols if idol.match_type[:2] == self.type[:2]]}'
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:{self.idols}'
+    
+    # def __repr__(self):
+    #     return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols if idol.match_type[:2] == self.type[:2]]}'
 
