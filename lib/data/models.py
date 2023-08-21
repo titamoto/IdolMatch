@@ -79,7 +79,7 @@ class User(Base):
 
         
     def __repr__(self):
-        return f'Your type is {self.type}, {types[self.type]}. You match from BTS is Noooo'
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS is Noooo'
     
     # def __repr__(self):
     #     return f'Your type is {self.type}, {types[self.type]}. You match from BTS is {User.find_match(self.email)}'

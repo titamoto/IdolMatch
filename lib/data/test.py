@@ -2,7 +2,7 @@ questions = [
                 'makes lists <- 3 -> relies on memory',
                  'sceptical <- 3 -> wants to believe',
                  'bored by time alone <- 3 -> needs time alone',
-                 'accepts things as they ar<- 3 -> unsatisfied with the ways things are',
+                 'accepts things as they are <- 3 -> unsatisfied with the ways things are',
                  'keeps a clean room <- 3 -> just puts stuff where ever',
                  'thinks "robotic" is an insult <- 3 -> strives to have a mechanical mind',
                  'energetic <- 3 -> mellow',

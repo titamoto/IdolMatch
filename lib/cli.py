@@ -3,7 +3,7 @@ import re
 import time
 from data.models import User
 from data.test import questions
-from data.types import types
+from data.types import types, find_type_dict
 from seeds import seed
 # from db.session import session
 
@@ -78,11 +78,16 @@ if __name__ == '__main__':
             answers.append(answer)
         result = calculate_result(answers)
         #create a user record in the database:
+        # alias = type_dict(result)['alias']
+
+        alias = find_type_dict(result)['alias']
+
         user = User(
             email=email,
             type=result,
-            type_alias=types[result]
+            type_alias=alias
         )
+
         user.persist_result()
         show_result(email)
     
@@ -94,7 +99,7 @@ if __name__ == '__main__':
         answer = input()
         #breaks if input is not a number
         try:
-            answer =int(answer)
+            answer = int(answer)
         except ValueError:
             print(f'{answer} is not a number from 1 to 5. Try again:')
             return ask_question(count)
