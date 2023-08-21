@@ -23,7 +23,6 @@ if __name__ == '__main__':
             ask_email()
         else:
             quit()
-        
 
     def ask_email():
         print('Please enter your email:')
@@ -78,10 +77,8 @@ if __name__ == '__main__':
             answers.append(answer)
         result = calculate_result(answers)
         #create a user record in the database:
-        # alias = type_dict(result)['alias']
-
+        
         alias = find_type_dict(result)['alias']
-
         user = User(
             email=email,
             type=result,
