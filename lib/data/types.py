@@ -1,8 +1,8 @@
+#return dictionary for a passed in type(four letters)
 def find_type_dict(four_letters):
     for type in types:
         if type['type'] == four_letters:
             return type
-
 
 types = [
     {

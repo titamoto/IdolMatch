@@ -93,7 +93,7 @@ if __name__ == '__main__':
             'Type a number from 1 to 5, where "1" corresponds with the left statement, \n"5"--with the right, and "3" is neutral:'
                 )
         answer = input()
-
+        #validate user's input:
         try:
             answer = int(answer)
         except ValueError:

@@ -17,13 +17,11 @@ def seed():
         session.query(User).delete()
         session.commit()
 
-
     def create_records():
 
         users = []
         idols = []
         for idol in bts:
-            # idol.users = [user for user in users if idol.match_type[:2] == user.type[:2]]
             session.add(idol)
             session.commit()
             idols.append(idol)
@@ -37,10 +35,6 @@ def seed():
             session.add(user)
             session.commit()
             users.append(user)
-
-        # test_user = User(email='user@test.com', type='ENTJ', type_alias=find_type_dict('ENTJ')['alias'])
-        # session.add(test_user)
-        # session.commit()
 
     delete_records()
     create_records()
