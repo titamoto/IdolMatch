@@ -44,10 +44,14 @@ class User(Base):
 
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
+    def check_matches(self):
+        if self.idols == []:
+            return 'No one from BTS will ever like you T__T'
+        else:
+            return self.idols
+
     def persist_result(self):
-        # self.idols = []
-        # match = session.query(Idol).filter(Idol.match_type[:2] == self.type[:2]).first()
-        # self.idols.append(match)
+        self.idols = session.query(Idol).filter(Idol.match_type.like(f'%{self.type}%')).all()
         session.add(self)
         session.commit()
 
@@ -66,7 +70,7 @@ class User(Base):
         session.commit()
         
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:{self.idols}'
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{self.check_matches()}'
     
     # def __repr__(self):
     #     return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols if idol.match_type[:2] == self.type[:2]]}'
