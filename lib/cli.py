@@ -58,6 +58,7 @@ if __name__ == '__main__':
     def show_result(email):
         result = User.get_result(email)
         print(result)
+        print('\n')
         time.sleep(2)
         options = ["redo the test", "back to main"]
         terminal_menu = TerminalMenu(options)

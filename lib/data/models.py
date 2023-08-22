@@ -48,9 +48,11 @@ class User(Base):
         if self.idols == []:
             return 'No one from BTS will ever like you T__T'
         else:
-            return self.idols
+            #make nice looking match output
+            return [idol.name for idol in self.idols]
 
     def persist_result(self):
+        self.idols = []
         self.idols = session.query(Idol).filter(Idol.match_type.like(f'%{self.type}%')).all()
         session.add(self)
         session.commit()

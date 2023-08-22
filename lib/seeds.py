@@ -33,7 +33,7 @@ def seed():
                 type=random.choice([type['type'] for type in types])
             )
             user.type_alias=find_type_dict(user.type)['alias']
-            user.idols = [idol for idol in idols if idol.match_type[:2] == user.type[:2]]
+            user.idols = [idol for idol in idols if user.type in idol.match_type]
             session.add(user)
             session.commit()
             users.append(user)
