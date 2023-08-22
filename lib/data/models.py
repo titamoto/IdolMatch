@@ -46,7 +46,7 @@ class User(Base):
 
     def check_matches(self):
         if self.idols == []:
-            print(f'\nNo one from BTS will ever like you T__T\n\n{disclaimer}')
+            print(f'\nNo one from BTS will ever like you T__T\n')
         else:
             return [idol.name for idol in self.idols]
 

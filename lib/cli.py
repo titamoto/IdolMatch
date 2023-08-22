@@ -4,7 +4,7 @@ import time
 from data.models import User
 from data.test import questions
 from data.types import find_type_dict
-from seeds import seed
+# from seeds import seed
 from helpers import logo, greeting
 
 if __name__ == '__main__':
@@ -117,8 +117,10 @@ if __name__ == '__main__':
         result = first_letter + second_letter + third_letter + fourth_letter
         return result
     
-    #seed the db:
-    seed()
+    #uncomment seed() to seed the db on start.
+    # all logged users' results will be deleted on the next app run and the db will be seeded with new random users.
+    # seed()
+
     #run main menu:
     main()
     

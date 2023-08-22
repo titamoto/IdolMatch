@@ -10,7 +10,7 @@ from data.models import Idol, User, idol_user
 fake = Faker()
 
 def seed():
-
+    print('Populating the database...')
     def delete_records():
         session.query(idol_user).delete()
         session.query(Idol).delete()
@@ -39,3 +39,4 @@ def seed():
     delete_records()
     create_records()
 
+seed()
