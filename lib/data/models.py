@@ -45,10 +45,11 @@ class User(Base):
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
     def check_matches(self):
-        if self.idols == []:
+        matches = [idol.name for idol in self.idols]
+        if matches == []:
             print(f'\nNo one from BTS will ever like you T__T\n')
         else:
-            return [idol.name for idol in self.idols]
+            return matches
 
     def persist_result(self):
         self.idols = []
