@@ -1,7 +1,7 @@
 from sqlalchemy import ForeignKey, Column, Integer, String, MetaData, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-# from .types import types
+from helpers import disclaimer
 from session import session
 
 convention = {
@@ -46,9 +46,8 @@ class User(Base):
 
     def check_matches(self):
         if self.idols == []:
-            return 'No one from BTS will ever like you T__T'
+            print(f'\nNo one from BTS will ever like you T__T\n\n{disclaimer}')
         else:
-            #make nice looking match output
             return [idol.name for idol in self.idols]
 
     def persist_result(self):
@@ -72,8 +71,4 @@ class User(Base):
         session.commit()
         
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{self.check_matches()}'
-    
-    # def __repr__(self):
-    #     return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{[idol.name for idol in self.idols if idol.match_type[:2] == self.type[:2]]}'
-
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{self.check_matches()}\n\n{disclaimer}'

@@ -1,0 +1,1 @@
+disclaimer = 'Disclaimer: The purpose of this app is fun only.\nNo happy relationships with BTS members or any other K-pop genius are not guaranteed.\nThis test has no scientifically approved accuracy.\nBased on Open Extended Jungian Type Scales 1.2 by Eric Jorgenson.'
