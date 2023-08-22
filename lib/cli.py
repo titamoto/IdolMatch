@@ -3,18 +3,16 @@ import re
 import time
 from data.models import User
 from data.test import questions
-from data.types import types, find_type_dict
+from data.types import find_type_dict
 from seeds import seed
-# from db.session import session
-
-greeting =' ____  ____  _____  __    __  __    __   ____  ___  _   _ \n(_  _)(  _ \(  _  )(  )  (  \/  )  /__\ (_  _)/ __)( )_( )\n _)(_  )(_) ))(_)(  )(__  )    (  /(__)\  )( ( (__  ) _ ( \n(____)(____/(_____)(____)(_/\/\_)(__)(__)(__) \___)(_) (_)\n'
+from helpers import logo, greeting
 
 if __name__ == '__main__':
 
     def main():
         print("\n" * 10)
+        print(logo)
         print(greeting)
-        print("Welcome to IdolMatch!")
         print("\n" * 2)
         options = ["login", "quit"]
         terminal_menu = TerminalMenu(options)
@@ -56,6 +54,7 @@ if __name__ == '__main__':
                 main()
 
     def show_result(email):
+        print('Showing result...\n\n')
         result = User.get_result(email)
         print(result)
         print('\n')
@@ -77,15 +76,14 @@ if __name__ == '__main__':
             count += 1
             answers.append(answer)
         result = calculate_result(answers)
-        #create a user record in the database:
         
+        #create a user record in the database:
         alias = find_type_dict(result)['alias']
         user = User(
             email=email,
             type=result,
             type_alias=alias
         )
-
         user.persist_result()
         show_result(email)
     
@@ -95,7 +93,7 @@ if __name__ == '__main__':
             'Type a number from 1 to 5, where "1" corresponds with the left statement, \n"5"--with the right, and "3" is neutral:'
                 )
         answer = input()
-        #breaks if input is not a number
+
         try:
             answer = int(answer)
         except ValueError:
