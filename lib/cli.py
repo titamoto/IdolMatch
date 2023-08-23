@@ -117,8 +117,8 @@ if __name__ == '__main__':
         result = first_letter + second_letter + third_letter + fourth_letter
         return result
     
-    #uncomment seed() to seed the db on start.
-    # all logged users' results will be deleted on the next app run and the db will be seeded with new random users.
+    #uncomment seed()and import statement to seed the db on start.
+    # all logged users' results will be deleted on the next app run and the db will be seeded with new random users set.
     # seed()
 
     #run main menu:

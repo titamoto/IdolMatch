@@ -31,7 +31,7 @@ class Idol(Base):
     users = relationship("User", secondary=idol_user, back_populates="idols")
 
     def __repr__(self):
-        return f'{self.name} is {self.type}, {self.type_alias}. His match types are {self.match_type}.'
+        return f'{self.name} is {self.type}, {self.type_alias}'
 
 
 class User(Base):
@@ -45,11 +45,11 @@ class User(Base):
     idols = relationship("Idol", secondary=idol_user, back_populates="users")
 
     def check_matches(self):
-        matches = [idol.name for idol in self.idols]
+        matches = [idol for idol in self.idols]
         if matches == []:
             print(f'\nNo one from BTS will ever like you T__T\n')
         else:
-            return matches
+            return str(matches)[1:-1]
 
     def persist_result(self):
         self.idols = []
