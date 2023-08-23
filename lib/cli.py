@@ -5,7 +5,7 @@ from data.models import User
 from data.test import questions
 from data.types import find_type_dict
 # from seeds import seed
-from helpers import logo, greeting
+from helpers import logo, greeting, disclaimer
 
 if __name__ == '__main__':
 
@@ -13,7 +13,9 @@ if __name__ == '__main__':
         print("\n" * 10)
         print(logo)
         print(greeting)
-        print("\n" * 2)
+        print("\n")
+        print(disclaimer)
+        print("\n")
         options = ["login", "quit"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()

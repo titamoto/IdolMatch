@@ -72,4 +72,4 @@ class User(Base):
         session.commit()
         
     def __repr__(self):
-        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{self.check_matches()}\n\n{disclaimer}'
+        return f'Your type is {self.type}, {self.type_alias}. You match from BTS:\n{self.check_matches()}.'
