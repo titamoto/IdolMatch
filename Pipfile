@@ -9,6 +9,7 @@ sqlalchemy = "==1.4"
 ipdb = "*"
 simple-term-menu = "*"
 alembic = "*"
+faker = "*"
 
 [dev-packages]
 
