@@ -31,7 +31,7 @@ if __name__ == '__main__':
             search_email(email_input)
         else:
             print('The input is invalid. Try again')
-            time.sleep(2)
+            time.sleep(1)
             ask_email()
 
     def search_email(email):
@@ -60,14 +60,32 @@ if __name__ == '__main__':
         result = User.get_result(email)
         print(result)
         print('\n')
-        time.sleep(2)
-        options = ["redo the test", "back to main"]
+        time.sleep(1)
+        options = ["show description", "redo the test", "back to main"]
         terminal_menu = TerminalMenu(options)
         menu_entry_index = terminal_menu.show()
         if menu_entry_index == 0:
-            start_test(email)
+            show_description(email)
         elif menu_entry_index == 1:
-            main() 
+            start_test(email)
+        elif menu_entry_index == 2:
+            main()
+
+    def show_description(email):
+        print('Showing type description...\n\n')
+        result = User.get_result(email)
+        description = find_type_dict(result.type)['description']
+        print('People of your type:')
+        print(description)
+        print('\n')
+        time.sleep(1)
+        options = ["show result", "back to main"]
+        terminal_menu = TerminalMenu(options)
+        menu_entry_index = terminal_menu.show()
+        if menu_entry_index == 0:
+            show_result(email)
+        elif menu_entry_index == 1:
+            main()
 
     def start_test(email):
         User.delete_result(email)
