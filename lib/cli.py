@@ -91,6 +91,7 @@ if __name__ == '__main__':
         User.delete_result(email)
         answers = []
         count = 0
+        print('Type a number from 1 to 5, where "1" meets the left statement, \n"5" meets the right, and "3" is neutral.')
         while count < len(questions):
             answer = ask_question(count)
             count += 1
@@ -109,18 +110,17 @@ if __name__ == '__main__':
     
     def ask_question(count):
         print (
-            f'\n{questions[count]}\n\n'
-            'Type a number from 1 to 5, where "1" corresponds with the left statement, \n"5"--with the right, and "3" is neutral:'
+            f'\n{questions[count]}\n'
                 )
         answer = input()
         #validate user's input:
         try:
             answer = int(answer)
         except ValueError:
-            print(f'{answer} is not a number from 1 to 5. Try again:')
+            print(f'\n{answer} is not a number from 1 to 5. Try again:')
             return ask_question(count)
         if answer not in range(1, 6):
-            print(f'{answer} is not a number from 1 to 5. Try again:')
+            print(f'\n{answer} is not a number from 1 to 5. Try again:')
             return ask_question(count)
         else:
             return answer
