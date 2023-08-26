@@ -5,8 +5,7 @@ IdolMatch is a CLI app tests matches you with a BTS member based on your persona
 It does not guarantee the formation of happy relationships with BTS members or any other K-pop angelic geniuses.  
 The test's accuracy is **not** scientifically validated.   
 
-## How to Install
-To run this app you need Python installed on your machine. Check [Python website](https://www.python.org/downloads/) to find the installation instructions.   
+## How to Install 
 To install this app follow the steps below.
 
 1. clone the repo by typing this command in your terminal:
@@ -21,22 +20,28 @@ or if you want to clone using SSH:
 $git clone git@github.com:titamoto/IdolMatch.git
 ```
 
-2. go into the lib directory inside the directory created by cloning this repo:
+2. go into the directory inside the directory created by cloning this repo:
 
 ```bash
-$ cd IdolMatch/lib
+$ cd IdolMatch/
 ```
 
-3. run `seeds.py` file to seed the database:
+3. install dependencies and launch virtual environment:
 
 ```bash
-$ python seeds.py
+$ pipenv install && pipenv shell
 ```
 
-4. start the app by running `cli.py` file:
+4. run `seeds.py` file to seed the database:
 
 ```bash
-$ python cli.py
+$ python lib/seeds.py
+```
+
+5. start the app by running `cli.py` file:
+
+```bash
+$ python lib/cli.py
 ```
 Note: if `python filename.py` command doesn't work for you to run .py files, try `python3 filename.py` instead.
 
