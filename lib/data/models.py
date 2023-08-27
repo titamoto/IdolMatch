@@ -49,11 +49,6 @@ class User(Base):
             print(f'\nNo one from BTS will ever like you T__T\n')
         else:
             return str(matches)[1:-1]
-    
-    # def delete_matching_idols(self):
-    #     self.idols = []
-    #     session.add(self)
-    #     session.commit()
 
     def persist_result(self):
         self.idols = []
