@@ -27,6 +27,7 @@ if __name__ == '__main__':
     def ask_email():
         print('Please enter your email:')
         email_input = input()
+        #validate email input
         if re.fullmatch(r'^\D[a-zA-Z0-9\.]+@[a-zA-Z]+\.[a-z]+', email_input):
             search_email(email_input)
         else:
@@ -113,7 +114,7 @@ if __name__ == '__main__':
             f'\n{questions[count]}\n'
                 )
         answer = input()
-        #validate user's input:
+        #validate user's input for an answer:
         try:
             answer = int(answer)
         except ValueError:
@@ -137,7 +138,7 @@ if __name__ == '__main__':
         result = first_letter + second_letter + third_letter + fourth_letter
         return result
     
-    #uncomment seed()and import statement to seed the db on start.
+    #uncomment seed() and import statement to seed the db on start.
     # all logged users' results will be deleted on the next app run and the db will be seeded with new random users set.
     # seed()
 

@@ -1,7 +1,6 @@
 from sqlalchemy import ForeignKey, Column, Integer, String, MetaData, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from helpers import disclaimer
 from session import session
 
 convention = {
@@ -50,9 +49,16 @@ class User(Base):
             print(f'\nNo one from BTS will ever like you T__T\n')
         else:
             return str(matches)[1:-1]
+    
+    # def delete_matching_idols(self):
+    #     self.idols = []
+    #     session.add(self)
+    #     session.commit()
 
     def persist_result(self):
         self.idols = []
+        session.add(self)
+        session.commit()
         self.idols = session.query(Idol).filter(Idol.match_type.like(f'%{self.type}%')).all()
         session.add(self)
         session.commit()
