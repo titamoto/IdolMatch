@@ -2,7 +2,7 @@
 IdolMatch is a CLI app tests matches you with a BTS member based on your personality type.
 
 **Disclaimer:** This app is intended for entertainment purposes only.  
-It does not guarantee the formation of happy relationships with BTS members or any other K-pop angelic geniuses.  
+It does not guarantee the formation of happy relationship with a BTS member or any other K-pop angelic genius.  
 The test's accuracy is **not** scientifically validated.   
 
 ## How to Install 
