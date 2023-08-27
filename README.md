@@ -46,6 +46,9 @@ $ python lib/cli.py
 Note: if `python filename.py` command doesn't work for you to run .py files, try `python3 filename.py` instead.
 
 ## How to Use
+
+![IdolMatch Main Menu](IdolMatch_Menu.png)
+
 Follow the instructions in the terminal. Basic walkthrough:
 1. login with email whether you are a new user or have been already registered
 2. see your previous result (for returning users) or start the test

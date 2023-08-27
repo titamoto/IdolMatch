@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 requests = "*"
 sqlalchemy = "==1.4"
-ipdb = "*"
 simple-term-menu = "*"
 alembic = "*"
 faker = "*"
