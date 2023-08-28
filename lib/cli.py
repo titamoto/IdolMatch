@@ -27,7 +27,7 @@ if __name__ == '__main__':
     def ask_email():
         print('Please enter your email:')
         email_input = input()
-        #validate email input
+        #validate email input:
         if re.fullmatch(r'^\D[a-zA-Z0-9\.]+@[a-zA-Z]+\.[a-z]+', email_input):
             search_email(email_input)
         else:
