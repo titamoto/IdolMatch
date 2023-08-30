@@ -23,7 +23,7 @@ $git clone git@github.com:titamoto/IdolMatch.git
 2. go into the directory inside the directory created by cloning this repo:
 
 ```bash
-$ cd IdolMatch/
+$ cd IdolMatch
 ```
 
 3. install dependencies and launch virtual environment:
@@ -32,16 +32,22 @@ $ cd IdolMatch/
 $ pipenv install && pipenv shell
 ```
 
-4. run `seeds.py` file to seed the database:
+4. go into the `lib` directiory:
 
 ```bash
-$ python lib/seeds.py
+$ cd lib
 ```
 
-5. start the app by running `cli.py` file:
+5. run `seeds.py` file to seed the database:
 
 ```bash
-$ python lib/cli.py
+$ python seeds.py
+```
+
+6. start the app by running `cli.py` file:
+
+```bash
+$ python cli.py
 ```
 Note: if `python filename.py` command doesn't work for you to run .py files, try `python3 filename.py` instead.
 
