@@ -32,7 +32,7 @@ $ cd IdolMatch
 $ pipenv install && pipenv shell
 ```
 
-4. go into the `lib` directiory:
+4. go into the `lib` directory:
 
 ```bash
 $ cd lib
